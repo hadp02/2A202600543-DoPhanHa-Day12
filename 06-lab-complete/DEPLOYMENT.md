@@ -34,7 +34,7 @@ Các biến môi trường cấu hình trên Dokploy:
 - `LOG_LEVEL` = `INFO`
 
 ## Screenshots
-Vui lòng thay thế các placeholder này bằng screenshot từ dự án của bạn (lưu ảnh vào thư mục `screenshots/` rồi push lên repo):
+Các ảnh chụp màn hình chứng minh trạng thái deploy:
 - [Deployment dashboard (Dokploy)](screenshots/dashboard.png)
 - [Service running (Logs/Metrics)](screenshots/running.png)
 - [Test results (Kết quả curl trên terminal)](screenshots/test.png)
