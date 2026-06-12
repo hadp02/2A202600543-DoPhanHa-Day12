@@ -21,7 +21,7 @@ curl https://lab12.hadp.id.vn/health
 curl -X POST https://lab12.hadp.id.vn/ask \
   -H "X-API-Key: secret-key-123" \
   -H "Content-Type: application/json" \
-  -d '{"question": "Xin chào, bạn là ai?"}'
+  -d '{"user_id": "test-user", "question": "Hello, who are you?"}'
 ```
 
 **Trên Windows (CMD / PowerShell):**
@@ -30,11 +30,11 @@ curl -X POST https://lab12.hadp.id.vn/ask \
 curl -X POST https://lab12.hadp.id.vn/ask ^
   -H "X-API-Key: secret-key-123" ^
   -H "Content-Type: application/json" ^
-  -d "{\"question\": \"Xin chào, bạn là ai?\"}"
+  -d "{\"user_id\": \"test-user\", \"question\": \"Hello, who are you?\"}"
 ```
 
 # Expected output: 
-# {"question": "Xin chào, bạn là ai?", "answer": "...", "model": "gpt-4o-mini", "timestamp": "..."}
+# {"user_id": "test-user", "question": "Hello, who are you?", "answer": "...", "history_length": 1, "model": "...", "timestamp": "..."}
 
 ## Environment Variables Set
 Các biến môi trường cấu hình trên Dokploy:

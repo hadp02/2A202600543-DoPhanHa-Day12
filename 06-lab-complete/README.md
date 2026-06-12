@@ -48,24 +48,57 @@ Kết hợp TẤT CẢ những gì đã học trong 1 project hoàn chỉnh.
 
 ---
 
-## Chạy Local
+## Chạy Local & Hướng Dẫn Sử Dụng
 
+### 1. Cấu hình ban đầu
 ```bash
-# 1. Setup
 cp .env.example .env
+```
+Trong file `.env`:
+- Bắt buộc đổi `AGENT_API_KEY` thành chuỗi bảo mật của bạn.
+- Bạn có thể để trống `OPENROUTER_API_KEY` lúc test ban đầu. Khi đó, hệ thống tự động sử dụng **Mock LLM** (trả về văn bản mẫu) để bạn test pipeline A2A mà không tốn tiền. Khi sẵn sàng chạy thực tế, hãy điền key OpenRouter vào.
 
-# 2. Chạy với Docker Compose
-docker compose up
+### 2. Khởi động hệ thống
+Dự án sử dụng kiến trúc Multi-Agent. Docker sẽ khởi động API Gateway cùng với 1 Registry và 4 sub-agents.
+```bash
+docker compose up --build
+```
 
-# 3. Test
+### 3. Kiểm tra Health
+```bash
 curl http://localhost/health
+```
 
-# 4. Lấy API key từ .env, test endpoint
-API_KEY=$(grep AGENT_API_KEY .env | cut -d= -f2)
-curl -H "X-API-Key: $API_KEY" \
-     -X POST http://localhost/ask \
+### 4. Gửi câu hỏi cho Multi-Agent (API `/ask`)
+
+Lưu ý: API yêu cầu header `X-API-Key` (lấy từ `.env`) và body JSON phải chứa cả `user_id` lẫn `question`.
+
+**Trường hợp dùng Linux / Mac / Git Bash:**
+```bash
+API_KEY="dev-key-change-me-in-production" # Thay bằng key trong .env
+curl -X POST http://localhost/ask \
+     -H "X-API-Key: $API_KEY" \
      -H "Content-Type: application/json" \
-     -d '{"question": "What is deployment?"}'
+     -d '{"user_id": "user123", "question": "Hợp đồng lao động có bắt buộc đóng BHXH không?"}'
+```
+
+**Trường hợp dùng Windows (CMD / PowerShell):**
+Do PowerShell/CMD gặp vấn đề về encoding UTF-8 và dấu nháy đơn, hãy dùng tiếng Anh hoặc `Invoke-RestMethod`:
+
+*Dùng PowerShell:*
+```powershell
+Invoke-RestMethod -Uri "http://localhost/ask" `
+  -Method Post `
+  -Headers @{"X-API-Key"="dev-key-change-me-in-production"; "Content-Type"="application/json"} `
+  -Body '{"user_id": "test-user", "question": "Hello, who are you?"}'
+```
+
+*Dùng CMD:*
+```cmd
+curl -X POST http://localhost/ask ^
+  -H "X-API-Key: dev-key-change-me-in-production" ^
+  -H "Content-Type: application/json" ^
+  -d "{\"user_id\": \"test-user\", \"question\": \"Hello, who are you?\"}"
 ```
 
 ---
