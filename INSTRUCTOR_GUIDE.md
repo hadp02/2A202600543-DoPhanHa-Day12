@@ -20,11 +20,11 @@
 
 ### Part 1: Localhost vs Production (8 points)
 
-| Criteria | Points | Description |
-|----------|--------|-------------|
-| **Exercise 1.1** | 2 | Identify 5+ anti-patterns in basic code |
-| **Exercise 1.2** | 2 | Successfully run basic version |
-| **Exercise 1.3** | 4 | Complete comparison table with meaningful insights |
+| Criteria         | Points | Description                                        |
+| ------------------| --------| ----------------------------------------------------|
+| **Exercise 1.1** | 2      | Identify 5+ anti-patterns in basic code            |
+| **Exercise 1.2** | 2      | Successfully run basic version                     |
+| **Exercise 1.3** | 4      | Complete comparison table with meaningful insights |
 
 **Grading notes:**
 - Exercise 1.1: Accept any valid anti-patterns (hardcoded secrets, no health check, etc.)

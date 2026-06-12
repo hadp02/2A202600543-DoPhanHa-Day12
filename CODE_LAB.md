@@ -33,14 +33,14 @@ Sau khi hoàn thành lab này, bạn sẽ:
 
 ##  Lộ Trình Lab
 
-| Phần | Thời gian | Nội dung |
-|------|-----------|----------|
-| **Part 1** | 30 phút | Localhost vs Production |
-| **Part 2** | 45 phút | Docker Containerization |
-| **Part 3** | 45 phút | Cloud Deployment |
-| **Part 4** | 40 phút | API Security |
-| **Part 5** | 40 phút | Scaling & Reliability |
-| **Part 6** | 60 phút | Final Project |
+| Phần       | Thời gian | Nội dung                |
+| ------------| -----------| -------------------------|
+| **Part 1** | 30 phút   | Localhost vs Production |
+| **Part 2** | 45 phút   | Docker Containerization |
+| **Part 3** | 45 phút   | Cloud Deployment        |
+| **Part 4** | 40 phút   | API Security            |
+| **Part 5** | 40 phút   | Scaling & Reliability   |
+| **Part 6** | 60 phút   | Final Project           |
 
 ---
 
