@@ -10,12 +10,12 @@
 5. Không có cơ chế xử lý tín hiệu ngắt (Graceful Shutdown) để tắt app an toàn.
 
 ### Exercise 1.3: Comparison table
-| Feature | Basic (Develop) | Advanced (Production) | Tại sao quan trọng? |
-|---------|-----------------|-----------------------|---------------------|
-| Config | Hardcode | Env vars | Dễ thay đổi cấu hình giữa các môi trường (dev/prod), không bị lộ thông tin nhạy cảm khi commit code. |
-| Health check | Không có | Có | Giúp hệ thống platform/orchestrator biết khi nào app bị treo để tự động restart, phục vụ tốt cho monitoring. |
-| Logging | `print()` | Structured JSON | Dễ dàng parse, tìm kiếm và phân tích log tự động trên các hệ thống quản lý log tập trung (ELK, Datadog). |
-| Shutdown | Đột ngột | Graceful Shutdown | Đảm bảo hoàn thành nốt các request đang xử lý dở dang và không làm thất thoát, mất mát dữ liệu trước khi container tắt hẳn. |
+| Feature      | Basic (Develop) | Advanced (Production) | Tại sao quan trọng?                                                                                                         |
+| --------------| -----------------| -----------------------| -----------------------------------------------------------------------------------------------------------------------------|
+| Config       | Hardcode        | Env vars              | Dễ thay đổi cấu hình giữa các môi trường (dev/prod), không bị lộ thông tin nhạy cảm khi commit code.                        |
+| Health check | Không có        | Có                    | Giúp hệ thống platform/orchestrator biết khi nào app bị treo để tự động restart, phục vụ tốt cho monitoring.                |
+| Logging      | `print()`       | Structured JSON       | Dễ dàng parse, tìm kiếm và phân tích log tự động trên các hệ thống quản lý log tập trung (ELK, Datadog).                    |
+| Shutdown     | Đột ngột        | Graceful Shutdown     | Đảm bảo hoàn thành nốt các request đang xử lý dở dang và không làm thất thoát, mất mát dữ liệu trước khi container tắt hẳn. |
 
 ## Part 2: Docker
 
@@ -33,8 +33,8 @@
 ## Part 3: Cloud Deployment
 
 ### Exercise 3.1: Deployment (Dùng Dokploy)
-- URL: `(Sẽ cập nhật sau khi hoàn thành deploy)`
-- Screenshot: `(Vui lòng cung cấp link hình ảnh hoặc chèn trong file DEPLOYMENT.md)`
+- URL: `https://lab12.hadp.id.vn`
+- Screenshot: Xem trong thư mục `06-lab-complete/screenshots/`
 
 ## Part 4: API Security
 

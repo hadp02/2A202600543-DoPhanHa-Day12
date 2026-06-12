@@ -1,7 +1,7 @@
 # Deployment Information
 
 ## Public URL
-`https://<ten-domain-cua-ban.com>` (Thay tên domain Dokploy của bạn vào đây)
+`https://lab12.hadp.id.vn`
 
 ## Platform
 **Dokploy** (Self-hosted VPS)
@@ -10,13 +10,13 @@
 
 ### Health Check
 ```bash
-curl https://<ten-domain-cua-ban.com>/health
+curl https://lab12.hadp.id.vn/health
 # Expected: {"status": "ok", "uptime_seconds": ..., "checks": ...}
 ```
 
 ### API Test (with authentication)
 ```bash
-curl -X POST https://<ten-domain-cua-ban.com>/ask \
+curl -X POST https://lab12.hadp.id.vn/ask \
   -H "X-API-Key: secret-key-123" \
   -H "Content-Type: application/json" \
   -d '{"question": "Xin chào, bạn là ai?"}'
