@@ -24,11 +24,19 @@ Kết hợp TẤT CẢ những gì đã học trong 1 project hoàn chỉnh.
 ```
 06-lab-complete/
 ├── app/
-│   ├── main.py         # Entry point — kết hợp tất cả
+│   ├── main.py         # Entry point — API Gateway 
 │   ├── config.py       # 12-factor config
 │   ├── auth.py         # API Key + JWT
 │   ├── rate_limiter.py # Rate limiting
 │   └── cost_guard.py   # Budget protection
+├── agents/             # Day 9 Multi-Agent System
+│   ├── common/         # LLM, registry/a2a clients
+│   ├── registry/       # Registry service
+│   ├── customer_agent/ # Entry point cho agents
+│   ├── law_agent/      # Legal Orchestrator
+│   ├── tax_agent/      # Tax Specialist
+│   └── compliance_agent/# Compliance Specialist
+├── start_agents.py     # Process manager cho agents
 ├── Dockerfile          # Multi-stage, production-ready
 ├── docker-compose.yml  # Full stack
 ├── railway.toml        # Deploy Railway

@@ -33,8 +33,8 @@ from app.auth import verify_api_key
 from app.rate_limiter import check_rate_limit
 from app.cost_guard import check_and_record_cost, get_daily_cost
 
-# Mock LLM (thay bằng OpenAI/Anthropic khi có API key)
-from utils.mock_llm import ask as llm_ask
+# A2A client helper to call Customer Agent
+from agents.common.a2a_client import delegate
 
 # ─────────────────────────────────────────────────────────
 # Logging — JSON structured
@@ -209,10 +209,25 @@ async def ask_agent(
         "client": str(request.client.host) if request.client else "unknown",
     }))
 
-    # Get history and build prompt context if needed (mock llm doesn't use it, but we satisfy requirement)
+    # Get history and build prompt context if needed
     history = get_history(user_id)
     
-    answer = llm_ask(body.question)
+    # Call the actual multi-agent system via Customer Agent
+    from uuid import uuid4
+    try:
+        answer = await delegate(
+            endpoint=settings.customer_agent_url,
+            question=body.question,
+            context_id=user_id,
+            trace_id=str(uuid4()),
+            depth=0,
+            caller_name="API Gateway"
+        )
+        if not answer:
+            answer = "Sorry, the agent network returned an empty response."
+    except Exception as e:
+        logger.error(f"Agent call failed: {e}")
+        answer = f"Error reaching the agent network: {e}"
 
     output_tokens = len(answer.split()) * 2
     check_and_record_cost(redis_client, user_id, 0, output_tokens)
@@ -234,7 +249,7 @@ async def ask_agent(
 def health():
     """Liveness probe. Platform restarts container if this fails."""
     status = "ok"
-    checks = {"llm": "mock" if not settings.openai_api_key else "openai"}
+    checks = {"llm": "openrouter" if settings.openrouter_api_key else "mock-legal-llm"}
     return {
         "status": status,
         "version": settings.app_version,

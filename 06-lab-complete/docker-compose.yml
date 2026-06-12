@@ -9,6 +9,9 @@ services:
       - ENVIRONMENT=staging
       - APP_NAME=Production AI Agent
       - REDIS_URL=redis://redis:6379/0
+      - CUSTOMER_AGENT_URL=http://localhost:10100
+      - REGISTRY_URL=http://localhost:10000
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
     env_file:
       - .env.local
     depends_on:

@@ -16,8 +16,12 @@ class Settings:
     app_name: str = field(default_factory=lambda: os.getenv("APP_NAME", "Production AI Agent"))
     app_version: str = field(default_factory=lambda: os.getenv("APP_VERSION", "1.0.0"))
 
-    # LLM
+    # LLM & Multi-Agent System
     openai_api_key: str = field(default_factory=lambda: os.getenv("OPENAI_API_KEY", ""))
+    openrouter_api_key: str = field(default_factory=lambda: os.getenv("OPENROUTER_API_KEY", ""))
+    openrouter_model: str = field(default_factory=lambda: os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-v4-flash"))
+    customer_agent_url: str = field(default_factory=lambda: os.getenv("CUSTOMER_AGENT_URL", "http://localhost:10100"))
+    registry_url: str = field(default_factory=lambda: os.getenv("REGISTRY_URL", "http://localhost:10000"))
     llm_model: str = field(default_factory=lambda: os.getenv("LLM_MODEL", "gpt-4o-mini"))
 
     # Security
